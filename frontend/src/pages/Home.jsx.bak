@@ -1,0 +1,125 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Hero1 from '../assets/Hero1.jpg'
+import Hero2 from '../assets/Hero2.jpg'
+import Hero3 from '../assets/Hero3.jpg'
+// import { Link } from 'react-router-dom';
+import RegistrationForm from "../components/RegistrationForm"; // Import your registration component
+import HeroSection from "../components/Home/HeroSection";
+// import Features from "../components/Home/Features";
+import FeaturesSection from "../components/Home/FeaturesSection";
+import HowitWorks from '../components/Home/HowitWorks'
+import Gallery from "../components/Home/Gallery";
+import Testimonials from "../components/Home/Testimonials";
+import Pricing from "../components/Home/Pricing";
+import CTA from "../components/Home/CTA";
+import Footer from "../components/Home/Footer";
+
+import { Stats } from "../components/Home/Stats";
+
+export default function Home() {
+  const [showRegistration, setShowRegistration] = useState(false);
+  const [selectedLoginType, setSelectedLoginType] = useState(''); // State for select value
+
+  const slides = [
+    {
+      id: 1,
+      title: "Edunext ERP",
+      subtitle: "An advanced and comprehensive school management software",
+      imageAlt: Hero1, // Placeholder for actual image
+      tagline: "ERP",
+    },
+    {
+      id: 2,
+      title: "Advanced Admission CRM & Marketing tool for schools",
+      subtitle: null,
+      imageAlt: Hero2,
+      tagline: "CRM",
+    },
+    {
+      id: 3,
+      title: "Helping 1200+ Schools Globally",
+      subtitle: "India's top 4 out of 10 residential schools run of Edunext",
+      imageAlt: Hero3,
+      tagline: "Success",
+    },
+  ];
+  const navigate = useNavigate(); // Hook for navigation
+
+
+  const handleLoginTypeChange = (event) => {
+    const value = event.target.value;
+    setSelectedLoginType(value);
+    if (value === 'user') {
+      navigate('/user-login'); // Navigate to user login page
+    } else if (value === 'admin') {
+      navigate('/login'); // Navigate to admin login page (assuming /login is admin login)
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-md">
+        <h1 className="text-3xl font-extrabold text-red-700">School CRM SaaS</h1>
+        <div className="flex items-center">
+          <select
+            value={selectedLoginType}
+            onChange={handleLoginTypeChange}
+            style={{ marginRight: '1rem' }}
+            className="text-gray-700 hover:text-red-600 font-medium border rounded px-2 py-2 mr-5"
+          >
+            <option value="">Select Login Type</option>
+            <option value="admin">Admin Login</option>
+            <option value="user">User Login</option>
+          </select>
+          {/* Register Button - Toggles Registration Form */}
+          <button
+            onClick={() => setShowRegistration(true)}
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-semibold transition-all"
+          >
+            Register School
+          </button>
+        </div>
+      </nav>
+
+      {/* Show Registration Form When Clicked */}
+      {showRegistration ? (
+        <div className="flex justify-center  bg-white shadow-md">
+          <RegistrationForm onClose={() => { setShowRegistration(false); navigate('/'); }} />
+        </div>
+      ) : (
+        <>
+          {/* Hero Section */}
+          <HeroSection />
+
+          {/* Features Section */}
+          <FeaturesSection />
+
+          {/*How it Works */}
+          <HowitWorks />
+
+          {/*Stats */}
+          <Stats />
+
+          {/*Gallery */}
+          <Gallery />
+
+          {/*Testimonials */}
+          <Testimonials />
+
+          {/* Pricing */}
+          <Pricing />
+
+          {/* CTA */}
+          <CTA />
+
+            {/* Footer */}
+          <Footer />
+        </>
+      )}
+
+     
+    </div>
+  );
+}

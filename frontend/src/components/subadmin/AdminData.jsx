@@ -1,0 +1,68 @@
+import React, { useEffect, useState } from 'react'
+import DashboardCard from './DashboardCard'
+import DashboardCharts from './DashboardCharts'
+import CalendarCard from './CalendarCard'
+// import SocialStats from './SocialStats'
+
+const AdminData = () => {
+  const [superAdmins, setSuperAdmins] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchSuperAdmins = async () => {
+      setLoading(true);
+      setError('');
+      try {
+        const res = await fetch('/api/superadmin/all-superadmins');
+        const data = await res.json();
+        if (res.ok) {
+          setSuperAdmins(data.superAdmins || []);
+        } else {
+          setError(data.message || 'Failed to fetch super admins');
+        }
+      } catch (err) {
+        setError('Failed to fetch super admins');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchSuperAdmins();
+  }, []);
+
+  return (
+    <div>
+      <DashboardCard />
+      <DashboardCharts />
+      <CalendarCard />
+      {/* <SocialStats/> */}
+      {/* <div className="mt-8">
+        <h2 className="text-xl font-bold mb-2">All Super Admins</h2>
+        {loading ? (
+          <div>Loading super admins...</div>
+        ) : error ? (
+          <div className="text-red-500">{error}</div>
+        ) : (
+          <table className="min-w-full bg-white border rounded shadow">
+            <thead>
+              <tr>
+                <th className="py-2 px-4 border-b">Name</th>
+                <th className="py-2 px-4 border-b">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              {superAdmins.map((admin) => (
+                <tr key={admin._id}>
+                  <td className="py-2 px-4 border-b">{admin.name}</td>
+                  <td className="py-2 px-4 border-b">{admin.email}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div> */}
+    </div>
+  )
+}
+
+export default AdminData
