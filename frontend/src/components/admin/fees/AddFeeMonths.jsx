@@ -236,12 +236,12 @@ const AddFeeMonths = ({ schoolId }) => {
   }, [months]);
 
   return (
-    <div className="min-h-screen p-6">
-      <div className="max-w-6xl mx-auto space-y-6">
+    <div className="min-h-screen bg-white text-black p-8">
+      <div className="max-w-screen-2xl mx-auto space-y-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-red-700">Set Fees - Session Months</h1>
-            <p className="text-gray-600">
+            <h1 className="text-3xl font-bold text-black">Set Fees - Session Months</h1>
+            <p className="text-gray-800">
               Define fee months and standard fee types for the selected academic session.
             </p>
           </div>
@@ -265,8 +265,8 @@ const AddFeeMonths = ({ schoolId }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Month management */}
           <div className="rounded-xl border border-red-200 bg-white shadow-sm">
-            <div className="border-b border-red-100 bg-red-50 px-5 py-3 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-red-700">Add Month For Fees</h2>
+            <div className="border-b border-red-100 bg-white px-5 py-3 flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-black">Add Month For Fees</h2>
               <span className="text-sm font-medium text-red-500">
                 {activeSessionLabel || 'Select session'}
               </span>
@@ -284,7 +284,7 @@ const AddFeeMonths = ({ schoolId }) => {
                   type="button"
                   onClick={handleAddMonth}
                   disabled={submitting || !selectedSession}
-                  className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-red-500 to-orange-400 px-4 py-2 font-semibold text-white shadow hover:from-red-600 hover:to-orange-500 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 font-semibold text-white shadow hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <PlusCircle className="h-4 w-4" />}
                   Save
@@ -292,7 +292,7 @@ const AddFeeMonths = ({ schoolId }) => {
               </div>
 
               <div className="border border-red-100 rounded-lg overflow-hidden">
-                <div className="grid grid-cols-3 bg-red-100 text-red-800 text-sm font-semibold">
+                <div className="grid grid-cols-3 bg-white text-black text-sm font-semibold">
                   <div className="px-3 py-2 border-r border-red-200">SR</div>
                   <div className="px-3 py-2 border-r border-red-200">Month</div>
                   <div className="px-3 py-2 text-center">Delete</div>
@@ -311,7 +311,7 @@ const AddFeeMonths = ({ schoolId }) => {
                       const isHighlighted = highlightedMonthId === month._id;
                       const rowClasses = [
                         'grid grid-cols-3 border-t border-red-100 text-sm text-gray-700 transition-colors duration-300',
-                        isHighlighted ? 'bg-amber-50 ring-1 ring-amber-300 shadow-inner' : index % 2 === 0 ? 'bg-white' : 'bg-red-50/40',
+                        isHighlighted ? 'bg-amber-50 ring-1 ring-amber-300 shadow-inner' : 'bg-white',
                       ].join(' ');
 
                       return (
@@ -345,8 +345,8 @@ const AddFeeMonths = ({ schoolId }) => {
 
           {/* Fee types */}
           <div className="rounded-xl border border-red-200 bg-white shadow-sm">
-            <div className="border-b border-red-100 bg-red-50 px-5 py-3 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-red-700">Select Fees Type</h2>
+            <div className="border-b border-red-100 bg-white px-5 py-3 flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-black">Select Fees Type</h2>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -395,7 +395,7 @@ const AddFeeMonths = ({ schoolId }) => {
                 type="button"
                 onClick={handlePersistFeeTypes}
                 disabled={submitting || feeTypes.length === 0}
-                className="mt-6 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 px-5 py-2.5 font-semibold text-white shadow hover:from-orange-500 hover:via-orange-600 hover:to-red-600 disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-6 inline-flex items-center justify-center rounded-md bg-red-600 px-5 py-2.5 font-semibold text-white shadow hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {submitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                 Submit

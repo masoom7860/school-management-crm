@@ -716,7 +716,7 @@ const StaffManagement = () => {
 
   return (
     <> {/* Wrap in Fragment */}
-      <div className="p-6 space-y-6">
+  <div className="p-6 space-y-6 max-w-screen-2xl mx-auto w-full">
         <h1 className="text-2xl font-semibold">Staff Management</h1>
 
         <div className="flex flex-wrap gap-4">
@@ -756,74 +756,78 @@ const StaffManagement = () => {
         ) : (
           <div className="overflow-x-auto text-sm">
             {filteredStaff.length > 0 ? (
-              <table className="min-w-full bg-white border border-gray-200">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="py-2 px-3 border-b text-left font-medium text-xs">NAME</th>
-                    <th className="py-2 px-3 border-b text-left font-medium text-xs">MOBILE / EMAIL</th>
-                    <th className="py-2 px-3 border-b text-left font-medium text-xs">REGNO/DOB</th>
-                    <th className="py-2 px-3 border-b text-left font-medium text-xs">ACTIONS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredStaff.map((member) => (
-                    <tr key={member._id} className="hover:bg-gray-50">
-                      <td className="py-2 px-3 border-b">
-                        <div className="flex items-center gap-3">
-                          {member.photoUrl ? (
-                            <img
-                              src={getPhotoSrc(member.photoUrl)}
-                              alt={`${member.name} photo`}
-                              className="w-8 h-8 rounded-full object-cover border"
-                            />
-                          ) : (
-                            <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-xs font-semibold text-gray-600">
-                              {(member.name || '').charAt(0).toUpperCase()}
-                            </div>
-                          )}
-                          <div>
-                            <div className="font-medium leading-tight">{member.name}</div>
-                            <div className="text-xs text-gray-600">{member.designation}</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="py-2 px-3 border-b">
-                        <div className="font-medium">{member.phone}</div>
-                        <div className="text-xs text-gray-600">{member.email}</div>
-                      </td>
-                      <td className="py-2 px-3 border-b">
-                        <div className="font-medium">{member.identityNumber}</div>
-                        <div className="text-xs text-gray-600">
-                          {member.dob ? new Date(member.dob).toLocaleDateString() : ''}
-                        </div>
-                      </td>
-                      <td className="py-2 px-3 border-b">
-                        <div className="flex items-center gap-3">
-                          <button
-                            onClick={() => handleShowDetails(member)}
-                            className="text-green-600 hover:text-green-800"
-                          >
-                            <LucideEye className="w-5 h-5" />
-                          </button>
-                          <button
-                            onClick={() => openDeletModal(member._id)}
-                            className="text-red-600 hover:text-red-800"
-                            disabled={actionLoading}
-                          >
-                            <LucideTrash2 className="w-5 h-5" />
-                          </button>
-                          <button
-                            onClick={() => handleEditClick(member)}
-                            className="text-red-600 hover:text-red-800"
-                          >
-                            <LucideEdit className="w-5 h-5" />
-                          </button>
-                        </div>
-                      </td>
+              <div className="bg-white shadow rounded-lg overflow-hidden">
+             
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-red-500">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">Name</th>
+                      <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">Mobile / Email</th>
+                      <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">RegNo / DOB</th>
+                      <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {filteredStaff.map((member) => (
+                      <tr key={member._id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-900">
+                          <div className="flex items-center gap-3">
+                            {member.photoUrl ? (
+                              <img
+                                src={getPhotoSrc(member.photoUrl)}
+                                alt={`${member.name} photo`}
+                                className="w-10 h-10 rounded-full object-cover border"
+                              />
+                            ) : (
+                              <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-base font-semibold text-gray-600">
+                                {(member.name || '').charAt(0).toUpperCase()}
+                              </div>
+                            )}
+                            <div>
+                              <div className="font-medium text-base">{member.name}</div>
+                              <div className="text-sm text-gray-500">{member.designation}</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700">
+                          <div className="font-medium">{member.phone}</div>
+                          <div className="text-sm text-gray-500">{member.email}</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700">
+                          <div className="font-medium">{member.identityNumber}</div>
+                          <div className="text-sm text-gray-500">{member.dob ? new Date(member.dob).toLocaleDateString() : ''}</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700">
+                          <div className="flex items-center gap-3">
+                            <button
+                              onClick={() => handleShowDetails(member)}
+                              className="text-green-600 hover:text-green-800"
+                              title="View"
+                            >
+                              <LucideEye className="w-5 h-5" />
+                            </button>
+                            <button
+                              onClick={() => openDeletModal(member._id)}
+                              className="text-red-600 hover:text-red-800"
+                              disabled={actionLoading}
+                              title="Delete"
+                            >
+                              <LucideTrash2 className="w-5 h-5" />
+                            </button>
+                            <button
+                              onClick={() => handleEditClick(member)}
+                              className="text-red-600 hover:text-red-800"
+                              title="Edit"
+                            >
+                              <LucideEdit className="w-5 h-5" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             ) : (
               <p>No staff members found.</p>
             )}

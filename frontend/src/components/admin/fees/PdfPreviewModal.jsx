@@ -822,8 +822,8 @@ const PdfPreviewModal = ({ isOpen, onClose, entry, onDownload }) => {
         style={{ maxWidth: '95vw' }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
+  {/* Header */}
+  <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-white">
           <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
             <Eye className="w-5 h-5 text-blue-500" />
             PDF Preview
@@ -845,8 +845,8 @@ const PdfPreviewModal = ({ isOpen, onClose, entry, onDownload }) => {
           </div>
         </div>
         
-        {/* Content */}
-        <div className="overflow-auto p-4 bg-gray-100" style={{ maxHeight: 'calc(90vh - 80px)' }}>
+  {/* Content */}
+  <div className="overflow-auto p-4 bg-white" style={{ maxHeight: 'calc(90vh - 80px)' }}>
           <div 
             ref={previewRef}
             className="bg-white p-6 rounded-xl shadow-xl"

@@ -6,6 +6,7 @@ const baseURL = import.meta.env.VITE_API_BASE_URL;
 const ViewAccount = () => {
   const [accountData, setAccountData] = useState({
     schoolName: "",
+    schoolId: "",
     address: "",
     city: "",
     state: "",
@@ -61,6 +62,7 @@ const ViewAccount = () => {
         const schoolData = response.data.school;
 
         setAccountData({
+          schoolId: schoolData._id || schoolData.id || localStorage.getItem("schoolId") || "",
           schoolName: schoolData.schoolName || "",
           address: schoolData.address || "",
           city: schoolData.city || "",
@@ -132,7 +134,7 @@ const ViewAccount = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden max-w-6xl mx-auto">
+    <div className="bg-white rounded-xl shadow-sm overflow-hidden max-w-screen-2xl mx-auto">
       {/* Header with logo and school name */}
       <div className="bg-gradient-to-r from-red-50 to-purple-50 px-6 py-8 border-b border-gray-200">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
@@ -222,6 +224,7 @@ const ViewAccount = () => {
             <div className="md:col-span-2">
               <h3 className="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">Basic Information</h3>
             </div>
+                <DetailField label="School ID" value={accountData.schoolId} />
             <DetailField label="School Name" value={accountData.schoolName} />
             <DetailField label="Principal Name" value={accountData.principalName} />
             <DetailField label="Address" value={accountData.address} />

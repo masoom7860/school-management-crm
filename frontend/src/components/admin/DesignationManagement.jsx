@@ -75,31 +75,29 @@ const DesignationManagement = () => {
       </div>
 
       {/* List */}
-      <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
-        <h3 className="bg-red-600 text-white p-3 font-semibold">
-          Designation List
-        </h3>
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="bg-gray-100 text-gray-700">
-              <th className="border p-2">Sr. No</th>
-              <th className="border p-2">Designation</th>
-              <th className="border p-2">Delete</th>
+      <div className="bg-white shadow rounded-lg overflow-hidden">
+        <div className="px-6 py-3 bg-red-600">
+          <h3 className="text-white font-semibold">Designation List</h3>
+        </div>
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sr. No</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Designation</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-white divide-y divide-gray-200">
             {designations.length > 0 ? (
               designations.map((d, index) => (
-                <tr
-                  key={d._id}
-                  className="hover:bg-gray-50 transition text-center"
-                >
-                  <td className="border p-2">{index + 1}</td>
-                  <td className="border p-2 font-medium">{d.name}</td>
-                  <td className="border p-2">
+                <tr key={d._id} className="hover:bg-gray-50 transition">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{index + 1}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{d.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                     <button
                       onClick={() => handleDelete(d._id)}
-                      className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg flex items-center justify-center mx-auto"
+                      className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg flex items-center justify-center"
+                      title="Delete designation"
                     >
                       <Trash2 size={16} />
                     </button>
@@ -108,12 +106,7 @@ const DesignationManagement = () => {
               ))
             ) : (
               <tr>
-                <td
-                  colSpan="3"
-                  className="text-center text-gray-500 p-4 italic"
-                >
-                  No designations found.
-                </td>
+                <td colSpan="3" className="px-6 py-4 text-center text-gray-500 italic">No designations found.</td>
               </tr>
             )}
           </tbody>

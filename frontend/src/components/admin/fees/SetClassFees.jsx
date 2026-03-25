@@ -271,12 +271,12 @@ const SetClassFees = ({ schoolId }) => {
   };
 
   return (
-    <div className="min-h-screen p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
+    <div className="min-h-screen bg-white text-black p-8">
+      <div className="max-w-screen-2xl mx-auto space-y-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-red-700">Set Month-wise Class Fees</h1>
-            <p className="text-sm text-gray-600">
+            <h1 className="text-3xl font-bold text-black">Set Month-wise Class Fees</h1>
+            <p className="text-sm text-gray-800">
               Configure monthly fee heads for each class. Values are auto-synced to student ledgers.
             </p>
           </div>
@@ -342,7 +342,7 @@ const SetClassFees = ({ schoolId }) => {
           <button
             type="button"
             onClick={() => setCopyPanelOpen((prev) => !prev)}
-            className="inline-flex items-center gap-2 rounded-md bg-orange-500 px-4 py-2 font-semibold text-white shadow hover:bg-orange-600"
+            className="inline-flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 font-semibold text-white shadow hover:bg-red-700"
           >
             Apply in Other Class
           </button>
@@ -405,7 +405,7 @@ const SetClassFees = ({ schoolId }) => {
                 type="button"
                 onClick={handleCopyPlan}
                 disabled={saving || copyTargets.length === 0}
-                className="inline-flex items-center gap-2 rounded-md bg-orange-500 px-4 py-2 font-semibold text-white shadow hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 font-semibold text-white shadow hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />} Copy Plan
               </button>
@@ -424,8 +424,8 @@ const SetClassFees = ({ schoolId }) => {
         )}
 
         <div className="overflow-auto rounded-xl border border-red-200 bg-white shadow-sm">
-          <table className="min-w-full divide-y divide-red-200 text-sm text-gray-700">
-            <thead className="bg-red-100 text-red-700">
+          <table className="min-w-full divide-y divide-gray-200 text-sm text-gray-700">
+            <thead className="bg-white text-black">
               <tr>
                 <th className="px-4 py-3 text-left font-semibold">Month</th>
                 {feeHeads.map((head) => (
@@ -455,7 +455,7 @@ const SetClassFees = ({ schoolId }) => {
                 grid.map((row, index) => {
                   const rowTotal = totals.rowTotals[index];
                   return (
-                    <tr key={row.monthId} className={index % 2 === 0 ? 'bg-white' : 'bg-red-50/30'}>
+                    <tr key={row.monthId} className={'bg-white'}>
                       <td className="px-4 py-3 font-semibold text-gray-800">{row.monthName}</td>
                       {feeHeads.map((head) => (
                         <td key={head} className="px-4 py-3">
@@ -476,7 +476,7 @@ const SetClassFees = ({ schoolId }) => {
               )}
             </tbody>
             {grid.length > 0 && (
-              <tfoot className="bg-red-50 text-red-700">
+              <tfoot className="bg-white text-black">
                 <tr>
                   <td className="px-4 py-3 font-semibold">Totals</td>
                   {feeHeads.map((head) => (
@@ -484,7 +484,7 @@ const SetClassFees = ({ schoolId }) => {
                       ₹ {currency(totals.columnTotals[head])}
                     </td>
                   ))}
-                  <td className="px-4 py-3 font-bold text-red-700">₹ {currency(totals.grandTotal)}</td>
+                  <td className="px-4 py-3 font-bold text-black">₹ {currency(totals.grandTotal)}</td>
                 </tr>
               </tfoot>
             )}
@@ -496,15 +496,15 @@ const SetClassFees = ({ schoolId }) => {
             type="button"
             onClick={handleSave}
             disabled={saving || grid.length === 0}
-            className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-red-500 to-orange-500 px-5 py-2.5 font-semibold text-white shadow hover:from-red-600 hover:to-orange-600 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-md bg-red-600 px-5 py-2.5 font-semibold text-white shadow hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />} Update
           </button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="rounded-xl border border-yellow-300 bg-yellow-50 p-5 text-sm text-yellow-900">
-            <h3 className="mb-2 text-lg font-semibold">Instructions</h3>
+          <div className="rounded-xl border border-gray-200 bg-white p-5 text-sm text-gray-700">
+            <h3 className="mb-2 text-lg font-semibold text-black">Instructions</h3>
             <ul className="space-y-1 list-disc list-inside">
               <li>Select session, class, and section (optional), then press <strong>Load</strong>.</li>
               <li>Enter amounts for each fee head. Totals recalculate automatically.</li>

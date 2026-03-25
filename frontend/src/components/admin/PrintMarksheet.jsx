@@ -838,7 +838,7 @@ function PrintMarksheet() {
   }
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen w-full">
+    <div className="p-6 min-h-screen w-full">
       <div className="w-full container mx-auto px-4 md:px-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 print:hidden">Print Marksheet</h1>
         <style>{`

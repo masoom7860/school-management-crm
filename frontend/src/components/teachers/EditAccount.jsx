@@ -205,7 +205,7 @@ const EditAccount = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-4 md:p-6">
+    <div className="max-w-screen-2xl mx-auto p-4 md:p-6">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="p-6 border-b border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800">Edit School Account</h2>

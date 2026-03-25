@@ -1041,13 +1041,13 @@ const SubmitFees = ({ schoolId }) => {
 
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen bg-white text-black p-8">
       <div ref={pdfContainerRef} className="fixed left-[-9999px] top-[-9999px]" aria-hidden="true" />
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-7xl mx-auto space-y-6"
+        className="max-w-screen-2xl mx-auto space-y-6"
       >
         <motion.div 
           variants={staggerContainer}
@@ -1060,7 +1060,7 @@ const SubmitFees = ({ schoolId }) => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-4xl font-bold bg-gradient-to-r from-red-600 via-red-700 to-black text-transparent bg-clip-text"
+              className="text-4xl font-bold text-black"
             >
               Submit Fees (Monthly Ledger)
             </motion.h1>
@@ -1068,7 +1068,7 @@ const SubmitFees = ({ schoolId }) => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-sm text-gray-600 mt-2"
+              className="text-sm text-gray-800 mt-2"
             >
               Filter outstanding ledgers, record payments, and review fee collection totals in real time.
             </motion.p>
@@ -1208,7 +1208,7 @@ const SubmitFees = ({ schoolId }) => {
               whileTap="tap"
               type="button"
               onClick={fetchLedgers}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-red-600 to-red-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-red-500/20 hover:from-red-700 hover:to-red-600 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-red-700 transition-all duration-200"
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
               Submit Fees
@@ -1219,7 +1219,7 @@ const SubmitFees = ({ schoolId }) => {
               whileTap="tap"
               type="button"
               onClick={clearFilters}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-red-200 px-4 py-3 text-sm font-semibold text-red-600 hover:bg-red-50 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-3 text-sm font-semibold text-white hover:bg-red-700 transition-all duration-200"
             >
               Clear Filters
             </motion.button>
@@ -1229,7 +1229,7 @@ const SubmitFees = ({ schoolId }) => {
               whileTap="tap"
               type="button"
               onClick={handleNotifyDefaulters}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-500 px-4 py-3 text-sm font-semibold text-yellow-900 shadow-lg shadow-yellow-500/20 hover:from-yellow-500 hover:to-yellow-600 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-red-700 transition-all duration-200"
             >
               <Bell className="h-4 w-4" /> Notify Defaulters
             </motion.button>
@@ -1239,7 +1239,7 @@ const SubmitFees = ({ schoolId }) => {
               whileTap="tap"
               type="button"
               onClick={testPdfGeneration}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/20 hover:from-purple-600 hover:to-purple-700 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-red-700 transition-all duration-200"
             >
               <FileText className="h-4 w-4" /> Test PDF
             </motion.button>
@@ -1249,7 +1249,7 @@ const SubmitFees = ({ schoolId }) => {
               whileTap="tap"
               type="button"
               onClick={handleDownloadClassRevenue}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 hover:from-orange-600 hover:to-orange-700 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-red-700 transition-all duration-200"
             >
               <PieChart className="h-4 w-4" /> Class Revenue
             </motion.button>
@@ -1259,7 +1259,7 @@ const SubmitFees = ({ schoolId }) => {
               whileTap="tap"
               type="button"
               onClick={handleDownloadPendingVsCollected}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-red-700 transition-all duration-200"
             >
               Pending vs Collected
             </motion.button>
@@ -1269,10 +1269,10 @@ const SubmitFees = ({ schoolId }) => {
         <motion.div 
           variants={cardHover}
           whileHover="hover"
-          className="rounded-xl border-2 border-red-200 bg-white/80 backdrop-blur-sm shadow-lg shadow-red-100/50 overflow-hidden"
+          className="rounded-xl border-2 border-red-200 bg-white shadow-lg shadow-red-100/50 overflow-hidden"
         >
-          <div className="flex flex-wrap gap-4 border-b border-red-100 bg-gradient-to-r from-red-50 to-red-100 px-6 py-4 text-sm">
-            <span className="font-semibold text-red-700 flex items-center gap-1">
+          <div className="flex flex-wrap gap-4 border-b border-red-100 bg-white px-6 py-4 text-sm">
+            <span className="font-semibold text-black flex items-center gap-1">
               <DollarSign className="w-4 h-4" />
               Total Principal to Pay Now:
             </span>
@@ -1289,9 +1289,9 @@ const SubmitFees = ({ schoolId }) => {
               Due: ₹{totals.due.toLocaleString('en-IN')}
             </span>
           </div>
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-red-200 text-sm text-gray-700">
-              <thead className="bg-gradient-to-r from-red-100 to-red-200 text-red-700">
+            <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200 text-sm text-gray-700">
+              <thead className="bg-white text-black">
                 <tr>
                   <th className="px-6 py-4 text-left font-semibold">Photo</th>
                   <th className="px-6 py-4 text-left font-semibold">Student</th>
@@ -1328,10 +1328,10 @@ const SubmitFees = ({ schoolId }) => {
                       .sort((a, b) => new Date(a) - new Date(b))[0];
                     const statusLabel = dueMonths.length === 0 ? 'Paid' : dueMonths.length === entry.months.length ? 'Due' : 'Partially Paid';
                     const admissionNumber = entry.studentId?.admissionNumber;
-                    return (
+                      return (
                       <motion.tr 
                         key={entry.studentKey} 
-                        className="odd:bg-white even:bg-red-50/40 hover:bg-gradient-to-r from-red-50/50 to-white/50 transition-colors duration-200"
+                        className="bg-white hover:bg-red-50/10 transition-colors duration-200"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
@@ -1461,7 +1461,7 @@ const SubmitFees = ({ schoolId }) => {
                               whileTap="tap"
                               type="button"
                               onClick={() => handleDownloadLedger(entry)}
-                              className="rounded-full bg-gradient-to-r from-red-500 to-red-600 p-2 text-white shadow-lg shadow-red-500/20 hover:from-red-600 hover:to-red-700 transition-all duration-200"
+                              className="rounded-full bg-red-600 p-2 text-white shadow-lg shadow-red-500/20 hover:bg-red-700 transition-all duration-200"
                               title="Download Ledger PDF"
                             >
                               <Download className="h-4 w-4" />
@@ -1494,9 +1494,9 @@ const SubmitFees = ({ schoolId }) => {
               exit={{ scale: 0.8, opacity: 0 }}
               className="w-full max-w-md rounded-xl bg-white shadow-2xl"
             >
-              <div className="border-b border-red-100 bg-gradient-to-r from-red-50 to-red-100 px-6 py-4">
+              <div className="border-b border-red-100 bg-white px-6 py-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-red-700 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-black flex items-center gap-2">
                     <DollarSign className="w-5 h-5" />
                     Submit Payment
                   </h3>
@@ -1512,7 +1512,7 @@ const SubmitFees = ({ schoolId }) => {
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg"
+                  className="text-sm text-gray-800 bg-white p-4 rounded-lg"
                 >
                   <div className="font-semibold text-gray-800 flex items-center gap-2">
                     <User className="w-4 h-4 text-red-500" />
@@ -1691,7 +1691,7 @@ const SubmitFees = ({ schoolId }) => {
                   transition={{ delay: 0.5 }}
                   className="flex items-center justify-between rounded-lg border-2 border-red-100 bg-red-50 px-4 py-3"
                 >
-                  <label className="flex items-center gap-2 text-sm font-medium text-red-700">
+                  <label className="flex items-center gap-2 text-sm font-medium text-black">
                     <input
                       type="checkbox"
                       checked={paymentModal.downloadAfterSubmit}
@@ -1728,7 +1728,7 @@ const SubmitFees = ({ schoolId }) => {
                     whileHover="hover"
                     whileTap="tap"
                     type="submit"
-                    className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-red-500/20 hover:from-red-700 hover:to-red-800 transition-all duration-200"
+                    className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-red-800 transition-all duration-200"
                   >
                     Submit Payment
                   </motion.button>
