@@ -51,7 +51,7 @@ export function Testimonials() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-red-600 text-xl">Testimonials</span>
-          <h2 className="text-gray-900 mt-4 text-2xl font-semibold">
+          <h2 className="text-gray-900 mt-4 text-2xl font-bold">
             What Our Clients Say
           </h2>
           <p className="text-gray-600 mt-4">

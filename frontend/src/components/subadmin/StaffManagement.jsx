@@ -761,16 +761,16 @@ const StaffManagement = () => {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-red-500">
                     <tr>
-                      <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">Name</th>
-                      <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">Mobile / Email</th>
-                      <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">RegNo / DOB</th>
-                      <th className="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider">Actions</th>
+                      <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider">Name</th>
+                      <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider">Mobile / Email</th>
+                      <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider">RegNo / DOB</th>
+                      <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {filteredStaff.map((member) => (
                       <tr key={member._id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           <div className="flex items-center gap-3">
                             {member.photoUrl ? (
                               <img
@@ -779,25 +779,25 @@ const StaffManagement = () => {
                                 className="w-10 h-10 rounded-full object-cover border"
                               />
                             ) : (
-                              <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-base font-semibold text-gray-600">
+                              <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold text-gray-600">
                                 {(member.name || '').charAt(0).toUpperCase()}
                               </div>
                             )}
                             <div>
-                              <div className="font-medium text-base">{member.name}</div>
-                              <div className="text-sm text-gray-500">{member.designation}</div>
+                              <div className="font-medium">{member.name}</div>
+                              <div className="text-xs text-gray-500">{member.designation}</div>
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                           <div className="font-medium">{member.phone}</div>
-                          <div className="text-sm text-gray-500">{member.email}</div>
+                          <div className="text-xs text-gray-500">{member.email}</div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                           <div className="font-medium">{member.identityNumber}</div>
-                          <div className="text-sm text-gray-500">{member.dob ? new Date(member.dob).toLocaleDateString() : ''}</div>
+                          <div className="text-xs text-gray-500">{member.dob ? new Date(member.dob).toLocaleDateString() : ''}</div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                           <div className="flex items-center gap-3">
                             <button
                               onClick={() => handleShowDetails(member)}

@@ -66,7 +66,7 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-red-600 text-xl">Process</span>
-          <h2 className="text-gray-900 mt-4 text-2xl font-semibold">
+          <h2 className="text-gray-900 mt-4 text-2xl font-bold">
             How It Works
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -121,7 +121,7 @@ export function HowItWorks() {
                   </motion.div>
 
                   <div className="text-red-600 mb-2">{item.step}</div>
-                  <h3 className="text-gray-900 mb-3 text-xl font-semibold">{item.title}</h3>
+                  <h3 className="text-gray-900 mb-3 text-xl font-bold">{item.title}</h3>
                   <p className="text-gray-600">{item.description}</p>
                 </motion.div>
               </motion.div>
