@@ -27,10 +27,10 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-20 bg-gradient-to-br from-yellow-50 via-white to-red-50 relative overflow-hidden">
+    <section className="py-20 bg-white relative overflow-hidden">
       {/* Animated background */}
       <motion.div
-        className="absolute top-1/2 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-300/20 to-red-300/20 rounded-full filter blur-3xl"
+        className="absolute top-1/2 left-1/4 w-96 h-96 bg-gradient-to-br from-red-300/20 to-white rounded-full filter blur-3xl"
         animate={{
           y: [0, 50, 0],
           x: [0, 30, 0],
@@ -50,8 +50,8 @@ export function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-red-600">Testimonials</span>
-          <h2 className="text-gray-900 mt-4">
+          <span className="text-red-600 text-xl">Testimonials</span>
+          <h2 className="text-gray-900 mt-4 text-2xl font-semibold">
             What Our Clients Say
           </h2>
           <p className="text-gray-600 mt-4">
@@ -72,7 +72,7 @@ export function Testimonials() {
             >
               {/* Quote Icon */}
               <motion.div 
-                className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-lg"
+                className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-red-200 to-red-300 rounded-full flex items-center justify-center shadow-lg"
                 initial={{ scale: 0, rotate: -180 }}
                 whileInView={{ scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
@@ -98,7 +98,7 @@ export function Testimonials() {
                     transition={{ delay: index * 0.1 + 0.4 + i * 0.05, type: "spring" }}
                     whileHover={{ scale: 1.2, rotate: 360 }}
                   >
-                    <Star size={20} className="fill-yellow-400 text-yellow-400" />
+                    <Star size={20} className="fill-red-500 text-red-500" />
                   </motion.div>
                 ))}
               </motion.div>

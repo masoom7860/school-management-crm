@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaHome, FaUsers, FaChalkboardTeacher, FaClipboardCheck, FaGraduationCap, FaBook, FaSignOutAlt, FaFileAlt, FaUser } from "react-icons/fa";
+import { FaHome, FaUsers, FaClipboardList, FaFileAlt, FaBookOpen, FaUserCog, FaBell, FaSignOutAlt } from "react-icons/fa";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from 'framer-motion';
@@ -17,24 +17,20 @@ import ViewAccount from "../components/teachers/ViewAccount";
 import NotificationOption from '../components/teachers/NotificationOption'
 import MarksheetManagement from "../components/teachers/MarksheetManagement";
 import StandaloneMarksheetList from "../components/teachers/StandaloneMarksheetList";
-// import TeachersProfile from "../components/teachers/TeachersProfile";
 
 const menuItems = [
   { icon: <FaHome />, label: "Dashboard" },
-  // { icon: <FaUser />, label: "Profile" },
   { icon: <FaUsers />, label: "Students Management", subItems: ["Add Student", "Update Student"] },
-  { icon: <FaClipboardCheck />, label: "Attendance", subItems: ["Attendance Management"] },
+  { icon: <FaClipboardList />, label: "Attendance", subItems: ["Attendance Management"] },
   { icon: <FaFileAlt />, label: "Marksheet" ,subItems: ["Marksheet","MarkSheetList"]},
-  // { icon: <FaGraduationCap />, label: "Exam", subItems: ["Online Exam Report"] },
-  { icon: <FaBook />, label: "Study Material", subItems: ["Study Material Management"] },
-  { icon: <FaChalkboardTeacher />, label: "Accounts", subItems: ["Edit Account", "View Accounts"] },
-  { icon: <FaChalkboardTeacher />, label: "Notification", subItems: ["View Notification"] },
+  { icon: <FaBookOpen />, label: "Study Material", subItems: ["Study Material Management"] },
+  { icon: <FaUserCog />, label: "Accounts", subItems: ["Edit Account", "View Accounts"] },
+  { icon: <FaBell />, label: "Notification", subItems: ["View Notification"] },
   { icon: <FaSignOutAlt />, label: "Logout" }, // Added logout option
 ];
 
 const componentMap = {
   "Dashboard": TeacherData,
-  // "Profile": TeachersProfile,
   "Add Student": StudentManagement,
   "Update Student": UpdateStudent,
   "Attendance Management": AttendanceManagement,

@@ -9,7 +9,7 @@ export function Stats() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-red-600 via-red-700 to-yellow-600 relative overflow-hidden">
+    <section className="py-20 bg-white relative overflow-hidden">
       {/* Animated Background Shapes */}
       <motion.div 
         className="absolute top-10 left-10 w-40 h-40 bg-white/10 rounded-full"
@@ -24,7 +24,7 @@ export function Stats() {
         }}
       />
       <motion.div 
-        className="absolute bottom-10 right-10 w-60 h-60 bg-yellow-400/10 rounded-full"
+        className="absolute bottom-10 right-10 w-60 h-60 bg-red-400/10 rounded-full"
         animate={{
           scale: [1.5, 1, 1.5],
           opacity: [0.2, 0.1, 0.2],
@@ -55,10 +55,10 @@ export function Stats() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-white">
+          <h2 className="text-gray-900 text-2xl font-bold">
             Trusted by Educational Institutions Worldwide
           </h2>
-          <p className="text-yellow-100 mt-4">
+          <p className="text-gray-600 mt-4">
             Join thousands of schools already using our platform
           </p>
         </motion.div>
@@ -67,19 +67,19 @@ export function Stats() {
           {stats.map((stat, index) => (
             <motion.div 
               key={index} 
-              className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
+              className="text-center bg-white rounded-2xl p-8 border border-red-100 shadow-md"
               initial={{ opacity: 0, scale: 0.5, y: 50 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               whileHover={{ 
                 scale: 1.1, 
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                backgroundColor: "rgba(254, 242, 242, 1)",
                 y: -10
               }}
             >
               <motion.div 
-                className="text-white mb-2"
+                className="text-red-700 mb-2"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
@@ -87,7 +87,7 @@ export function Stats() {
               >
                 {stat.value}
               </motion.div>
-              <div className="text-yellow-200">{stat.label}</div>
+              <div className="text-gray-600">{stat.label}</div>
             </motion.div>
           ))}
         </div>

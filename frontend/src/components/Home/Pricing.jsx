@@ -1,4 +1,5 @@
 import { Check, Star } from 'lucide-react';
+import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 
 const plans = [
@@ -39,7 +40,7 @@ const plans = [
       'SMS notifications',
       'Library management'
     ],
-    color: 'border-yellow-400 shadow-2xl lg:scale-105',
+    color: 'border-red-300 shadow-2xl lg:scale-105',
     buttonClass: 'bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 shadow-xl'
   },
   {
@@ -68,10 +69,10 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-br from-red-50 via-yellow-50 to-white relative overflow-hidden">
+    <section id="pricing" className="py-20 bg-gradient-to-br from-white via-red-100 to-white relative overflow-hidden">
       {/* Animated background */}
       <motion.div
-        className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-red-300/20 to-yellow-300/20 rounded-full filter blur-3xl"
+        className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-red-300/20 to-white rounded-full filter blur-3xl"
         animate={{
           scale: [1, 1.3, 1],
           x: [0, -50, 0],
@@ -91,8 +92,8 @@ export function Pricing() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-red-600 uppercase tracking-wide text-sm sm:text-base">Pricing</span>
-          <h2 className="text-gray-900 mt-2 sm:mt-4 text-3xl sm:text-4xl font-bold">
+          <span className="text-red-600 uppercase tracking-wide sm:text-base text-xl">Pricing</span>
+          <h2 className="text-gray-900 mt-2 sm:mt-4 text-2xl font-bold">
             Simple, Transparent Pricing
           </h2>
           <p className="text-gray-600 mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base">
@@ -120,12 +121,12 @@ export function Pricing() {
                   transition={{ delay: 0.3 }}
                 >
                   <motion.div 
-                    className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-700 px-6 py-2 rounded-full flex items-center gap-2 shadow-lg"
+                    className="bg-gradient-to-r from-red-200 to-red-300 text-red-700 px-6 py-2 rounded-full flex items-center gap-2 shadow-lg"
                     animate={{
                       boxShadow: [
-                        "0 10px 20px rgba(251, 191, 36, 0.3)",
-                        "0 10px 30px rgba(251, 191, 36, 0.5)",
-                        "0 10px 20px rgba(251, 191, 36, 0.3)"
+                        "0 10px 20px rgba(239, 68, 68, 0.25)",
+                        "0 10px 30px rgba(239, 68, 68, 0.35)",
+                        "0 10px 20px rgba(239, 68, 68, 0.25)"
                       ]
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
@@ -137,7 +138,7 @@ export function Pricing() {
               )}
 
               <div className="text-center mb-6 sm:mb-8">
-                <h3 className="text-gray-900 mb-2 text-xl sm:text-2xl font-semibold">{plan.name}</h3>
+                <h3 className="text-gray-900 mb-2 text-xl font-bold">{plan.name}</h3>
                 <p className="text-gray-600 mb-4 text-sm sm:text-base">{plan.description}</p>
                 <div className="flex items-end justify-center gap-1">
                   <motion.span 
@@ -189,7 +190,7 @@ export function Pricing() {
           transition={{ duration: 0.6 }}
         >
           <motion.div 
-            className="inline-block bg-white rounded-2xl p-6 sm:p-8 shadow-xl border-4 border-yellow-400"
+            className="inline-block bg-white rounded-2xl p-6 sm:p-8 shadow-xl border-4 border-red-200"
             whileHover={{ scale: 1.05, rotate: 1 }}
           >
             <div className="flex items-center gap-4 flex-wrap justify-center">
@@ -198,7 +199,7 @@ export function Pricing() {
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               >
-                <span className="text-white">💯</span>
+                <BsFillPatchCheckFill className="text-white" size={20} />
               </motion.div>
               <div className="text-left">
                 <div className="text-gray-900 text-sm sm:text-base">30-Day Money Back Guarantee</div>

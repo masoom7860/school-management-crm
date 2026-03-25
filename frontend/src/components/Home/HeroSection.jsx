@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import ArrowRight from '../icons/ArrowRight';
 import { useState } from 'react';
 import ContactSchoolModal from '../common/ContactSchoolModal';
+import { BsCheckLg } from 'react-icons/bs';
 const Play = ({ size = 20, ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} fill="currentColor" {...props}>
     <path d="M8 5v14l11-7z" />
@@ -11,10 +12,10 @@ const Play = ({ size = 20, ...props }) => (
 export default function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <section className="relative bg-gradient-to-br from-red-50 via-yellow-50 to-white overflow-hidden">
+    <section className="relative bg-gradient-to-br from-white via-red-100 to-white overflow-hidden">
       {/* Animated gradient orbs */}
       <motion.div 
-        className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-red-400/30 to-yellow-400/30 rounded-full filter blur-3xl"
+        className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-red-400/30 to-white rounded-full filter blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
@@ -26,7 +27,7 @@ export default function HeroSection() {
         }}
       />
       <motion.div 
-        className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-yellow-400/30 to-red-400/30 rounded-full filter blur-3xl"
+        className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-white to-red-400/30 rounded-full filter blur-3xl"
         animate={{
           scale: [1.2, 1, 1.2],
           opacity: [0.5, 0.3, 0.5],
@@ -49,13 +50,13 @@ export default function HeroSection() {
               transition={{ duration: 0.6 }}
             >
               <motion.span 
-                className="bg-yellow-400 text-red-700 px-4 py-2 rounded-full shadow-lg inline-block"
+                className="bg-red-100 text-red-700 px-4 py-2 rounded-full shadow-lg inline-block"
                 whileHover={{ scale: 1.05 }}
                 animate={{ 
                   boxShadow: [
-                    "0 10px 20px rgba(251, 191, 36, 0.3)",
-                    "0 10px 30px rgba(251, 191, 36, 0.5)",
-                    "0 10px 20px rgba(251, 191, 36, 0.3)"
+                    "0 10px 20px rgba(239, 68, 68, 0.2)",
+                    "0 10px 30px rgba(239, 68, 68, 0.35)",
+                    "0 10px 20px rgba(239, 68, 68, 0.2)"
                   ]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -65,14 +66,13 @@ export default function HeroSection() {
             </motion.div>
             
             <motion.h1 
-              className="text-gray-900"
+              className="text-gray-900 text-2xl font-bold"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Manage Your School Efficiently with Modern CRM
             </motion.h1>
-            
             <motion.p 
               className="text-gray-600 text-lg"
               initial={{ opacity: 0, y: 30 }}
@@ -122,7 +122,7 @@ export default function HeroSection() {
             >
               {[
                 { value: '500+', label: 'Schools', color: 'text-red-600' },
-                { value: '50K+', label: 'Students', color: 'text-yellow-600' },
+                { value: '50K+', label: 'Students', color: 'text-red-600' },
                 { value: '98%', label: 'Satisfaction', color: 'text-red-600' }
               ].map((stat, index) => (
                 <motion.div
@@ -155,7 +155,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <motion.div 
-              className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-400"
+              className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-red-300"
               whileHover={{ scale: 1.02, rotate: 1 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -175,11 +175,11 @@ export default function HeroSection() {
             >
               <div className="flex items-center gap-4">
                 <motion.div 
-                  className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center"
+                  className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center"
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 >
-                  <span className="text-red-600">✓</span>
+                  <BsCheckLg className="text-red-600" size={20} />
                 </motion.div>
                 <div>
                   <div className="text-gray-900">Easy to Use</div>

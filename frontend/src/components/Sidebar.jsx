@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   FaBars, 
   FaChevronDown,
+  FaPrint,
   FaHome,
   FaUsers,
   FaChalkboardTeacher,

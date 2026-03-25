@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaUserGraduate, FaChalkboardTeacher, FaUser } from 'react-icons/fa';
 import { fadeIn, slideInUp } from '../utils/animations';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
@@ -265,18 +266,34 @@ function UserLogin() {
                 onChange={handleChange}
                 className="w-full h-12 border-2 border-red-200 bg-white/80 backdrop-blur-sm px-4 rounded-lg text-sm focus:border-red-400 focus:ring-2 focus:ring-red-300 transition-all duration-200"
               />
-              <select
-                name="role"
-                value={formData.role}
-                onChange={handleChange}
-                className="w-full h-12 border-2 border-red-200 bg-white/80 backdrop-blur-sm px-4 rounded-lg text-sm focus:border-red-400 focus:ring-2 focus:ring-red-300 transition-all duration-200"
-              >
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-                <option value="staff">Staff</option>
-                <option value="parent">Parent</option>
-                <option value="subadmin">Sub Admin</option>
-              </select>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, role: 'student' }))}
+                  className={`flex-1 h-12 flex items-center justify-center gap-2 rounded-lg border-2 px-3 transition-all ${formData.role === 'student' ? 'bg-red-600 text-white border-red-600' : 'bg-white/80 border-red-200'}`}
+                >
+                  <FaUserGraduate />
+                  <span className="text-sm">Student</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, role: 'teacher' }))}
+                  className={`flex-1 h-12 flex items-center justify-center gap-2 rounded-lg border-2 px-3 transition-all ${formData.role === 'teacher' ? 'bg-red-600 text-white border-red-600' : 'bg-white/80 border-red-200'}`}
+                >
+                  <FaChalkboardTeacher />
+                  <span className="text-sm">Teacher</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, role: 'staff' }))}
+                  className={`flex-1 h-12 flex items-center justify-center gap-2 rounded-lg border-2 px-3 transition-all ${formData.role === 'staff' ? 'bg-red-600 text-white border-red-600' : 'bg-white/80 border-red-200'}`}
+                >
+                  <FaUser />
+                  <span className="text-sm">Staff</span>
+                </button>
+              </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -324,18 +341,34 @@ function UserLogin() {
                 onChange={handleChange}
                 className="w-full h-12 border-2 border-red-200 bg-white/80 backdrop-blur-sm px-4 rounded-lg text-sm focus:border-red-400 focus:ring-2 focus:ring-red-300 transition-all duration-200"
               />
-              <select
-                name="role"
-                value={formData.role}
-                onChange={handleChange}
-                className="w-full h-12 border-2 border-red-200 bg-white/80 backdrop-blur-sm px-4 rounded-lg text-sm focus:border-red-400 focus:ring-2 focus:ring-red-300 transition-all duration-200"
-              >
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-                <option value="staff">Staff</option>
-                <option value="parent">Parent</option>
-                <option value="subadmin">Sub Admin</option>
-              </select>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, role: 'student' }))}
+                  className={`flex-1 h-12 flex items-center justify-center gap-2 rounded-lg border-2 px-3 transition-all ${formData.role === 'student' ? 'bg-red-600 text-white border-red-600' : 'bg-white/80 border-red-200'}`}
+                >
+                  <FaUserGraduate />
+                  <span className="text-sm">Student</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, role: 'teacher' }))}
+                  className={`flex-1 h-12 flex items-center justify-center gap-2 rounded-lg border-2 px-3 transition-all ${formData.role === 'teacher' ? 'bg-red-600 text-white border-red-600' : 'bg-white/80 border-red-200'}`}
+                >
+                  <FaChalkboardTeacher />
+                  <span className="text-sm">Teacher</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, role: 'staff' }))}
+                  className={`flex-1 h-12 flex items-center justify-center gap-2 rounded-lg border-2 px-3 transition-all ${formData.role === 'staff' ? 'bg-red-600 text-white border-red-600' : 'bg-white/80 border-red-200'}`}
+                >
+                  <FaUser />
+                  <span className="text-sm">Staff</span>
+                </button>
+              </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

@@ -22,8 +22,8 @@ const features = [
     icon: GraduationCap,
     title: 'Admission Portal',
     description: 'Streamline the admission process with online applications and automated workflows.',
-    color: 'bg-yellow-100 text-yellow-600',
-    gradient: 'from-yellow-500 to-yellow-600'
+    color: 'bg-red-100 text-red-600',
+    gradient: 'from-red-500 to-red-600'
   },
   {
     icon: Calendar,
@@ -36,8 +36,8 @@ const features = [
     icon: FileText,
     title: 'Report Cards',
     description: 'Generate comprehensive report cards and progress reports automatically.',
-    color: 'bg-yellow-100 text-yellow-700',
-    gradient: 'from-yellow-600 to-yellow-700'
+    color: 'bg-red-100 text-red-700',
+    gradient: 'from-red-600 to-red-700'
   },
   {
     icon: MessageSquare,
@@ -50,8 +50,8 @@ const features = [
     icon: BarChart3,
     title: 'Analytics & Insights',
     description: 'Make data-driven decisions with powerful analytics and reporting tools.',
-    color: 'bg-yellow-100 text-yellow-600',
-    gradient: 'from-yellow-500 to-yellow-600'
+    color: 'bg-red-100 text-red-600',
+    gradient: 'from-red-500 to-red-600'
   },
   {
     icon: BookOpen,
@@ -64,17 +64,17 @@ const features = [
     icon: CreditCard,
     title: 'Fee Management',
     description: 'Handle fee collection, invoicing, and financial reporting seamlessly.',
-    color: 'bg-yellow-100 text-yellow-700',
-    gradient: 'from-yellow-600 to-yellow-700'
+    color: 'bg-red-100 text-red-700',
+    gradient: 'from-red-600 to-red-700'
   }
 ];
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-20 bg-gradient-to-br from-gray-50 via-white to-red-50 relative overflow-hidden">
+    <section id="features" className="py-20 bg-white relative overflow-hidden">
       {/* Animated background gradient */}
       <motion.div
-        className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-yellow-300/20 to-red-300/20 rounded-full filter blur-3xl"
+        className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-red-300/20 to-white rounded-full filter blur-3xl"
         animate={{
           scale: [1, 1.3, 1],
           x: [0, 50, 0],
@@ -96,14 +96,14 @@ export default function FeaturesSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.span 
-            className="text-red-600"
+            className="text-red-600 text-xl font-semibold "
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             Features
           </motion.span>
-          <h2 className="text-gray-900 mt-4">
+          <h2 className="text-gray-900 mt-4 text-2xl font-semibold">
             Everything You Need to Run Your School
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -131,7 +131,7 @@ export default function FeaturesSection() {
                 >
                   <Icon size={28} className="text-white" />
                 </motion.div>
-                <h3 className="text-gray-900 mb-2">{feature.title}</h3>
+                <h3 className="text-gray-900 mb-2 text-xl font-semibold">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.div>
             );

@@ -32,12 +32,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/help" element={<Documentation />} />
-        <Route path="/ui-demo" element={<UIDemoPage />} />
+        <Route path="/ui-demo" element={< UIDemoPage />} />                                                                                           
 
         {/* Public routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/user-login" element={<UserLogin />} />
-        <Route path="/RegistrationForm" element={<RegistrationForm />} />
+        <Route path="/RegistrationForm" element={<RegistrationForm />} />                                                                                                                                      
         <Route path="/superadmindashboard" element={
           <ProtectedSuperAdminRoute>
             <SuperAdminDashboard />

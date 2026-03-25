@@ -34,7 +34,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="py-20 bg-gradient-to-br from-white via-yellow-50/30 to-white relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-white via-red-100 to-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -44,7 +44,7 @@ export function HowItWorks() {
 
       {/* Animated gradient orbs */}
       <motion.div
-        className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-red-300/20 to-yellow-300/20 rounded-full filter blur-3xl"
+        className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-red-300/20 to-white rounded-full filter blur-3xl"
         animate={{
           x: [0, 100, 0],
           y: [0, 50, 0],
@@ -65,8 +65,8 @@ export function HowItWorks() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-red-600">Process</span>
-          <h2 className="text-gray-900 mt-4">
+          <span className="text-red-600 text-xl">Process</span>
+          <h2 className="text-gray-900 mt-4 text-2xl font-semibold">
             How It Works
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -77,7 +77,7 @@ export function HowItWorks() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           {/* Connection Lines */}
           <motion.div 
-            className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-red-200 via-yellow-200 to-red-200"
+            className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-red-200 via-white to-red-200"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -101,7 +101,7 @@ export function HowItWorks() {
                 >
                   {/* Step Number Badge */}
                   <motion.div 
-                    className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg border-4 border-white"
+                    className="absolute -top-4 -right-4 w-12 h-12 bg-red-100 rounded-full flex items-center justify-center shadow-lg border-4 border-white"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
@@ -121,7 +121,7 @@ export function HowItWorks() {
                   </motion.div>
 
                   <div className="text-red-600 mb-2">{item.step}</div>
-                  <h3 className="text-gray-900 mb-3">{item.title}</h3>
+                  <h3 className="text-gray-900 mb-3 text-xl font-semibold">{item.title}</h3>
                   <p className="text-gray-600">{item.description}</p>
                 </motion.div>
               </motion.div>

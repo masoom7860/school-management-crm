@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-black-50">
+    <div className="min-h-screen bg-white">
       {/* Navbar */}
       <Header
         selectedLoginType={selectedLoginType}
@@ -77,7 +77,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex justify-center bg-white shadow-xl shadow-red-500/10 p-8"
+            className="flex justify-center bg-white/95 backdrop-blur-md shadow-xl shadow-red-900/20 p-8"
           >
             <RegistrationForm onClose={() => { setShowRegistration(false); navigate('/'); }} />
           </motion.div>

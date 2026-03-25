@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaHome, FaUsers, FaClipboardCheck, FaBook, FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaUsers, FaCertificate, FaComments, FaBookOpen, FaClipboardList, FaUserPlus, FaCreditCard, FaFileAlt, FaBell, FaSignOutAlt } from "react-icons/fa";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,28 +19,18 @@ import StudentAdmission from '../components/students/StudentAdmission';
 import ExaminationReport from "../components/students/ExaminationReport";
 import Notification from "../components/students/Notification";
 import StudentData from "../components/students/StudentData";
-import MyFees from "../components/students/MyFees"; // Import the new MyFees component
-
-// Remove imports for redundant fee components
-// import StudentFeeStatusTable from '../modules/fee-management/staff/StudentFeeStatusTable';
-// import StudentFeeTimeline from '../modules/fee-management/staff/StudentFeeTimeline';
-// Remove import for old OnlineFee component
-// import OnlineFee from "../components/students/OnlineFee";
-
+import MyFees from "../components/students/MyFees"; 
 
 const menuItems = [
     { icon: <FaHome />, label: "Dashboard" },
-    { icon: <FaUsers />, label: "Student Certificate" },
-    { icon: <FaClipboardCheck />, label: "Student Feedback" },
-    { icon: <FaClipboardCheck />, label: "Student Study Material" },
-    { icon: <FaClipboardCheck />, label: "View Attendance" },
-    { icon: <FaClipboardCheck />, label: "Student Admission" },
-    { icon: <FaClipboardCheck />, label: "Fee Details" }, // Replaced "Online Fee" with "Fee Details"
-    { icon: <FaClipboardCheck />, label: "Examination Report" },
-    // Remove menu items for redundant fee components
-    // { icon: <FaClipboardCheck />, label: "Student Fee Status" },
-    // { icon: <FaClipboardCheck />, label: "Student Fee Timeline" },
-    { icon: <FaClipboardCheck />, label: "Notification" },
+    { icon: <FaCertificate />, label: "Student Certificate" },
+    { icon: <FaComments />, label: "Student Feedback" },
+    { icon: <FaBookOpen />, label: "Student Study Material" },
+    { icon: <FaClipboardList />, label: "View Attendance" },
+    { icon: <FaUserPlus />, label: "Student Admission" },
+    { icon: <FaCreditCard />, label: "Fee Details" }, 
+    { icon: <FaFileAlt />, label: "Examination Report" },
+    { icon: <FaBell />, label: "Notification" },
     { icon: <FaSignOutAlt />, label: "Logout" },
 ];
 
@@ -51,12 +41,10 @@ const componentMap = {
     "Student Study Material": StudentStudyMaterial,
     "View Attendance": ViewAttendance,
     "Student Admission": StudentAdmission,
-    "Fee Details": MyFees, // Mapped "Fee Details" to the new MyFees component
+    "Fee Details": MyFees, 
     "Examination Report": ExaminationReport,
     "Notification": Notification,
-    // Remove mappings for redundant fee components
-    // "Student Fee Status": StudentFeeStatusTable,
-    // "Student Fee Timeline": StudentFeeTimeline,
+   
 };
 
 const StudentDashboard = () => {

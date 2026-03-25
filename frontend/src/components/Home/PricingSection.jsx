@@ -9,11 +9,11 @@ export default function PricingSection() {
 
   return (
     <section className="py-20 bg-gray-100 text-center">
-      <h2 className="text-4xl font-bold text-gray-800">Flexible Pricing Plans</h2>
+  <h2 className="text-2xl font-bold text-gray-800">Flexible Pricing Plans</h2>
       <div className="flex flex-wrap justify-center gap-10 px-12 mt-10">
         {plans.map((plan, index) => (
           <div key={index} className="p-8 bg-white shadow-xl rounded-lg text-center w-80 transform hover:scale-105 transition-all">
-            <h3 className="text-2xl font-bold text-red-700">{plan.name}</h3>
+            <h3 className="text-xl font-bold text-red-700">{plan.name}</h3>
             <p className="text-gray-700 text-lg mt-2 font-semibold">{plan.price}</p>
             <ul className="text-gray-600 mt-4 space-y-2">
               {plan.features.map((feature, i) => (

@@ -4,12 +4,14 @@ import jwt_decode from 'jwt-decode';
 import {
   FaHome, FaUsers, FaChalkboardTeacher,
   FaClipboardCheck, FaGraduationCap, FaBook, FaCog,
-  FaSignOutAlt, FaCreditCard
+  FaSignOutAlt, FaCreditCard, FaPrint, FaUserGraduate, FaUserShield,
+  FaClipboardList, FaFileAlt, FaTable, FaCalendarAlt, FaSchool, FaBookOpen, FaCertificate, FaUserCircle, FaImage
 } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
+import ResponsiveContainer from '../components/Layout/ResponsiveContainer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../utils/animations';
 // import GlobalFooter from '../components/GlobalFooter.jsx';
@@ -59,23 +61,23 @@ import PrintMarksheet from '../components/admin/PrintMarksheet';
 
 const menuItems = [
   { icon: <FaHome />, label: "Admin" },
-  { icon: <FaUsers />, label: "School Images" },
-  { icon: <FaUsers />, label: "Print",subItems: ["Student Id Card","Staff Id Card","Print Marksheet"]  },
+  { icon: <FaImage />, label: "School Images" },
+  { icon: <FaPrint />, label: "Print", subItems: ["Student Id Card","Staff Id Card","Print Marksheet"] },
   { icon: <FaUsers />, label: "Staff Management" },
   // { icon: <FaUsers />, label: "Manage Sub Admin" },
   { icon: <FaChalkboardTeacher />, label: "Teacher Management" },
-  { icon: <FaUsers />, label: "Student Management" ,subItems: ["Add Student", "Update Student"] },
+  { icon: <FaUserGraduate />, label: "Student Management" ,subItems: ["Add Student", "Update Student"] },
   // { icon: <FaUsers />, label: "Parent's Management" },
-  {icon:<FaUsers/>,label:"Attendance Management"},
-  {icon:<FaUsers/>,label:"Exam Management",subItems:["Fill Marksheet"]},
+  { icon: <FaClipboardList />, label: "Attendance Management" },
+  { icon: <FaFileAlt />, label: "Exam Management", subItems:["Fill Marksheet"] },
   // { icon: <FaBook />, label: "Marksheet",subItems: ["Create Marksheet", "Bulk Marksheet Entry"] },
-  { icon: <FaBook />, label: "Set Maximum Marks" },
+  { icon: <FaTable />, label: "Set Maximum Marks" },
 
-  { icon: <FaBook />, label: "Add Designation" },
-  { icon: <FaBook />, label: "Session Management" },
-  { icon: <FaBook />, label: "Class Management" },
-  { icon: <FaBook />, label: "Subject Management" },
-  { icon: <FaBook />, label: "Certificate" },
+  { icon: <FaUserShield />, label: "Add Designation" },
+  { icon: <FaCalendarAlt />, label: "Session Management" },
+  { icon: <FaSchool />, label: "Class Management" },
+  { icon: <FaBookOpen />, label: "Subject Management" },
+  { icon: <FaCertificate />, label: "Certificate" },
   {
     icon: <FaClipboardCheck />,
     label: "Fee Management",
@@ -92,7 +94,7 @@ const menuItems = [
   // { icon: <FaGraduationCap />, label: "Certificate Management" },
   // { icon: <FaGraduationCap />, label: "Online Exam & Report Management" },
   { icon: <FaCog />, label: "Edit Account" },
-  { icon: <FaCog />, label: "View Account" },
+  { icon: <FaUserCircle />, label: "View Account" },
   // { icon: <FaUsers />, label: "All Super Admins" },
   // { icon: <FaCog />, label: "Website Management" },
   { icon: <FaSignOutAlt />, label: "Logout" }
@@ -147,6 +149,8 @@ const componentMap = {
 const AdminDashboard = () => {
   const [isSidebarExpanded, setSidebarExpanded] = useState(true);
   const [activeComponent, setActiveComponent] = useState("Admin");
+  // Track whether the viewport is mobile-sized and auto-collapse sidebar on mobile
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState({
@@ -155,6 +159,8 @@ const AdminDashboard = () => {
     schoolName: "",
     schoolId: ""
   });
+
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
   useEffect(() => {
     const name = localStorage.getItem("adminName");
@@ -195,6 +201,22 @@ const AdminDashboard = () => {
     });
   }, [navigate]);
 
+  // Update sidebar state responsively when window resizes.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1024; // Tailwind lg breakpoint
+      setIsMobile(mobile);
+      if (!mobile) setSidebarExpanded(true);
+      else setSidebarExpanded(false);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleMenuClick = (label) => {
     // console.log("Clicked menu item:", label);
     if (label === "Logout") {
@@ -218,6 +240,13 @@ const AdminDashboard = () => {
 
   const ActiveComponent = componentMap[activeComponent];
 
+  // Small helper to render a mapped component and inject schoolId & token props
+  const RenderWithProps = ({ Comp }) => {
+    if (!Comp) return null;
+    const schoolId = userInfo.schoolId;
+    return <Comp schoolId={schoolId} token={token} />;
+  };
+
   return (
     <div className="flex">
       <Sidebar
@@ -226,6 +255,16 @@ const AdminDashboard = () => {
         isExpanded={isSidebarExpanded}
         onToggle={() => setSidebarExpanded(!isSidebarExpanded)}
       />
+
+      {/* Mobile overlay when sidebar is open on small screens */}
+      {isMobile && isSidebarExpanded && (
+        <div
+          aria-hidden
+          onClick={() => setSidebarExpanded(false)}
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+        />
+      )}
+
       <div className="flex-1 flex flex-col min-h-screen">
         <Navbar
           toggleSidebar={() => setSidebarExpanded(!isSidebarExpanded)}
@@ -234,9 +273,8 @@ const AdminDashboard = () => {
           schoolName={userInfo.schoolName}
           showSidebarToggle={true}
           logoUrl={localStorage.getItem("schoolLogo")}
-        >
-          {/* Logout button is handled by sidebar, so don't show here */}
-        </Navbar>
+        />
+
         <AnimatePresence mode="wait">
           <motion.div
             key={activeComponent}
@@ -244,25 +282,19 @@ const AdminDashboard = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="p-0 flex-1"
+            className="flex-1"
           >
             <div className="bg-gradient-to-br from-red-50 via-white to-black-50 min-h-screen">
-              <div className="w-full p-0">
-                <div className="w-full bg-white/80 backdrop-blur-sm rounded-none shadow-lg shadow-red-100/50 ring-0 border border-red-100">
-                  <div className="p-6">
-                    {/* Pass schoolId and token to the active component */}
-                    {ActiveComponent ? (
-                      <ActiveComponent schoolId={userInfo.schoolId} token={localStorage.getItem("token")} />
-                    ) : (
-                      <AdminData schoolId={userInfo.schoolId} token={localStorage.getItem("token")} />
-                    )}
-                  </div>
-                </div>
-              </div>
+              <ResponsiveContainer>
+                {ActiveComponent ? (
+                  <RenderWithProps Comp={ActiveComponent} />
+                ) : (
+                  <RenderWithProps Comp={AdminData} />
+                )}
+              </ResponsiveContainer>
             </div>
           </motion.div>
         </AnimatePresence>
-        {/* <GlobalFooter /> */}
       </div>
     </div>
   );

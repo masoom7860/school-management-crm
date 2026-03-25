@@ -25,10 +25,10 @@ const images = [
 
 export function Gallery() {
   return (
-    <section className="py-20 bg-gradient-to-br from-white via-red-50/30 to-yellow-50/30 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-white via-red-100 to-white relative overflow-hidden">
       {/* Animated background gradient */}
       <motion.div
-        className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-red-300/20 to-yellow-300/20 rounded-full filter blur-3xl"
+        className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-red-300/20 to-white rounded-full filter blur-3xl"
         animate={{
           scale: [1, 1.4, 1],
           opacity: [0.2, 0.4, 0.2],
@@ -48,8 +48,8 @@ export function Gallery() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-red-600">Gallery</span>
-          <h2 className="text-gray-900 mt-4">
+          <span className="text-red-600 text-xl">Gallery</span>
+          <h2 className="text-gray-900 mt-4 text-2xl font-semibold">
             See Our Platform in Action
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -90,19 +90,19 @@ export function Gallery() {
                   transition={{ duration: 0.3 }}
                 >
                   <motion.div 
-                    className="inline-block bg-yellow-400 text-red-700 px-3 py-1 rounded-full mb-2"
+                    className="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full mb-2"
                     whileHover={{ scale: 1.1 }}
                   >
                     {image.category}
                   </motion.div>
-                  <h3 className="text-white">{image.title}</h3>
+                  <h3 className="text-white text-xl font-semibold">{image.title}</h3>
                 </motion.div>
               </motion.div>
 
               {/* Border Animation */}
               <motion.div 
                 className="absolute inset-0 border-4 border-transparent rounded-2xl"
-                whileHover={{ borderColor: "#FBBF24" }}
+                whileHover={{ borderColor: "#ef4444" }}
                 transition={{ duration: 0.3 }}
               />
             </motion.div>
